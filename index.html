@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Montażowe</title>
+    <style>
+        body {
+            background-color: black;
+            color: yellow;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .icon {
+            width: 50px;
+            margin: 20px;
+            cursor: pointer;
+        }
+        iframe {
+            width: 80%;
+            height: 400px;
+            border: none;
+        }
+        .arrow {
+            cursor: pointer;
+            font-size: 30px;
+            margin: 20px;
+            color: yellow;
+        }
+        .creator {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .contact {
+            margin-top: 40px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Portfolio Montażowe</h1>
+    
+    <div>
+        <a href="https://discord.gg/E8SyN4JZ" target="_blank">
+            <img src="https://darkanddarker.wiki.spellsandguns.com/images/thumb/1/15/Discord_logo.webp/213px-Discord_logo.webp.png" alt="Discord" class="icon">
+        </a>
+        <a href="https://www.youtube.com/@Wikak__/videos" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" class="icon">
+        </a>
+    </div>
+
+    <h2>Moje Portfolio</h2>
+    
+    <div>
+        <span class="arrow" id="prev">&#10094;</span>
+        <span class="arrow" id="next">&#10095;</span>
+    </div>
+    
+    <div class="creator" id="videoCreator">Twórca: [Imię i Nazwisko]</div>
+    <iframe id="youtubePlayer" src="" allowfullscreen></iframe>
+    
+    <script>
+        const videos = [
+            { id: 'zbpMC7rDGcQ', creator: 'Zombiaczek   od 01:04' },
+            { id: 'kMOPUB3FQQA', creator: 'XZY Twórca Minecraft' },
+            { id: '-yTJdyzl0ow', creator: 'Cpotworek' }
+        ]; // Tablica z obiektami filmów
+        let currentVideoIndex = 0; // Indeks aktualnie odtwarzanego filmu
+
+        function loadVideo(video) {
+            const player = document.getElementById('youtubePlayer');
+            player.src = `https://www.youtube.com/embed/${video.id}?autoplay=1`;
+            document.getElementById('videoCreator').innerText = `Twórca: ${video.creator}`;
+        }
+
+        function showVideo(index) {
+            if (index >= 0 && index < videos.length) {
+                currentVideoIndex = index;
+                loadVideo(videos[currentVideoIndex]);
+            }
+        }
+
+        document.getElementById('prev').onclick = function() {
+            if (currentVideoIndex > 0) {
+                showVideo(currentVideoIndex - 1);
+            }
+        };
+
+        document.getElementById('next').onclick = function() {
+            if (currentVideoIndex < videos.length - 1) {
+                showVideo(currentVideoIndex + 1);
+            }
+        };
+
+        // Przykład użycia: załaduj pierwszy film z tablicy
+        loadVideo(videos[currentVideoIndex]);
+    </script>
+
+    <div class="contact">
+        <h3>Dane kontaktowe</h3>
+        <p>Email: biznes.wikaczek@gmail.com</p>
+        <p>Discord: witkopo_ </p>
+    </div>
+    
+</body>
+</html>
